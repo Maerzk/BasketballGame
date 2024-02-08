@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://46u7wdvuppg7"]
 
-[ext_resource type="Script" path="res://scenes/world.gd" id="1_1f54x"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_1f54x"]
 [ext_resource type="PackedScene" uid="uid://q51uoyl3wvu8" path="res://scenes/basketballcourt.tscn" id="2_1vrkd"]
 [ext_resource type="PackedScene" uid="uid://cjbtykrul546" path="res://scenes/XR_Origin.tscn" id="2_o4l0a"]
 [ext_resource type="PackedScene" uid="uid://bo3x7mjqfm0o1" path="res://assets/BallRack.blend" id="4_qik73"]
