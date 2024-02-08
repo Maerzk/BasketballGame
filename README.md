@@ -16,4 +16,4 @@ Mit dem rechten Controller sich der Ball ansteuern, mit dem rechten Trigger grei
 Mit der unteren Taste am linken Controller lässt sich das Menü öffnen. Im Menü können mit dem rechten Controller die Menü Elemente angesteuert werden.
 
 Anmerkungen:
-Falls Sie die .blend Dateien öffnen wollen tun Sie das am besten in Blender 3.x da die Integration von 4.x Blender Dateien noch nicht von Godot unterstützt wird.
+Falls Sie die .blend Dateien öffnen wollen tun Sie das am besten in Blender 3.x da die Integration von 4.x Blender Dateien noch nicht von Godot unterstützt wird und sobald die Datei einmal in Blender 4.x geöffnet wurde die Integration kaputt geht.
