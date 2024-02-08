@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://brtgh134r333h"]
 
-[ext_resource type="Script" path="res://WristUI.gd" id="1_3hv26"]
+[ext_resource type="Script" path="res://scenes/WristUI.gd" id="1_3hv26"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="2_v2iqj"]
 [ext_resource type="PackedScene" uid="uid://c7exku5aomrmt" path="res://scenes/UI.tscn" id="3_j2ae8"]
 
