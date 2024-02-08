@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjbtykrul546"]
+
+[ext_resource type="PackedScene" uid="uid://bpdj5njb8nhot" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_fullglove_hand.tscn" id="1_llr7q"]
+[ext_resource type="Material" uid="uid://bnv8ta3dfv6g6" path="res://materials/Hands.tres" id="2_6c4bu"]
+[ext_resource type="PackedScene" uid="uid://d1tl07geqm5xq" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_fullglove_hand.tscn" id="2_uclhm"]
+[ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="3_lskdv"]
+[ext_resource type="PackedScene" uid="uid://bkv43ec6chcf3" path="res://addons/godot-xr-tools/hands/scenes/collision/collision_hand_left.tscn" id="4_hp8uj"]
+[ext_resource type="PackedScene" uid="uid://c3uoohvnshach" path="res://addons/godot-xr-tools/hands/scenes/collision/collision_hand_right.tscn" id="5_1cnvj"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_l8675"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="6_avmm4"]
+[ext_resource type="PackedScene" uid="uid://brtgh134r333h" path="res://scenes/wrist_ui.tscn" id="7_antqc"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="9_7q4nk"]
+
+[node name="XROrigin3D" type="XROrigin3D"]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+
+[node name="XRLefthand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XRLefthand" instance=ExtResource("1_llr7q")]
+hand_material_override = ExtResource("2_6c4bu")
+
+[node name="FunctionTeleport" parent="XRLefthand" instance=ExtResource("3_lskdv")]
+
+[node name="CollisionHandLeft" parent="XRLefthand" instance=ExtResource("4_hp8uj")]
+
+[node name="WristUI" parent="XRLefthand" instance=ExtResource("7_antqc")]
+transform = Transform3D(0.000188249, -0.00404557, 0.0112959, 5.91541e-05, 0.0112975, 0.00404514, -0.0119984, -7.77442e-06, 0.000197171, 0.00300001, -0.0321465, 0.244595)
+
+[node name="XRRighthand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XRRighthand" instance=ExtResource("2_uclhm")]
+hand_material_override = ExtResource("2_6c4bu")
+
+[node name="FunctionPickup" parent="XRRighthand" instance=ExtResource("6_avmm4")]
+
+[node name="CollisionHandRight" parent="XRRighthand" instance=ExtResource("5_1cnvj")]
+
+[node name="FunctionPointer" parent="XRRighthand" instance=ExtResource("9_7q4nk")]
+laser_length = 1
+
+[node name="PlayerBody" parent="." instance=ExtResource("5_l8675")]
+
+[connection signal="button_pressed" from="XRLefthand" to="XRLefthand/WristUI" method="_on_xr_lefthand_button_pressed"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3q3no2ln5mhd"]
+
+[ext_resource type="Script" path="res://scripts/Viewer.gd" id="1_o0nex"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yvts3"]
+radius = 0.375
+height = 1.5
+
+[node name="Fan" type="Node3D"]
+script = ExtResource("1_o0nex")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_yvts3")

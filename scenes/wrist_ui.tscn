@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://brtgh134r333h"]
+
+[ext_resource type="Script" path="res://WristUI.gd" id="1_3hv26"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="2_v2iqj"]
+[ext_resource type="PackedScene" uid="uid://c7exku5aomrmt" path="res://scenes/UI.tscn" id="3_j2ae8"]
+
+[node name="WristUI" type="Node3D"]
+script = ExtResource("1_3hv26")
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("2_v2iqj")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+screen_size = Vector2(1280, 720)
+collision_layer = 5242880
+scene = ExtResource("3_j2ae8")
+viewport_size = Vector2(1150, 648)
+transparent = 0
+unshaded = true

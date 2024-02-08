@@ -1,0 +1,120 @@
+[gd_scene load_steps=17 format=3 uid="uid://46u7wdvuppg7"]
+
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_1f54x"]
+[ext_resource type="PackedScene" uid="uid://q51uoyl3wvu8" path="res://scenes/basketballcourt.tscn" id="2_1vrkd"]
+[ext_resource type="PackedScene" uid="uid://cjbtykrul546" path="res://scenes/XR_Origin.tscn" id="2_o4l0a"]
+[ext_resource type="PackedScene" uid="uid://bo3x7mjqfm0o1" path="res://assets/BallRack.blend" id="4_qik73"]
+[ext_resource type="PackedScene" uid="uid://c7exku5aomrmt" path="res://scenes/UI.tscn" id="6_5ad50"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="6_b8voy"]
+[ext_resource type="PackedScene" uid="uid://ciqnad371ludv" path="res://scenes/ball_pickable.tscn" id="6_npnhw"]
+[ext_resource type="PackedScene" uid="uid://cwqjxrsyr3wql" path="res://scenes/basket.tscn" id="8_6isci"]
+[ext_resource type="PackedScene" uid="uid://c5m6cslmn3xle" path="res://scenes/UI_score.tscn" id="9_owhy5"]
+[ext_resource type="ArrayMesh" uid="uid://dve1v8j6banw6" path="res://assets/bleachers.obj" id="10_nnfxm"]
+[ext_resource type="PackedScene" uid="uid://d3q3no2ln5mhd" path="res://scenes/fan.tscn" id="11_i37ew"]
+[ext_resource type="AudioStream" uid="uid://cubjnj6fisdf" path="res://assets/sounds/park_children_110111wav-14818.mp3" id="12_yvo8c"]
+[ext_resource type="Script" path="res://scripts/Sound_Ambient.gd" id="13_4enfs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ar77"]
+sky_top_color = Color(0.694118, 0.8, 0.956863, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
+ground_bottom_color = Color(0.690196, 0.796078, 0.956863, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Sky" id="Sky_83ull"]
+sky_material = SubResource("ProceduralSkyMaterial_5ar77")
+
+[sub_resource type="Environment" id="Environment_ehfnw"]
+background_mode = 2
+background_energy_multiplier = 0.8
+sky = SubResource("Sky_83ull")
+ssao_enabled = true
+volumetric_fog_density = 0.005
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_1f54x")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0.00766174, 0.488447, 0.87256, -0.499945, 0.757573, -0.419689, 0, 8.2544, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 400.0
+
+[node name="BasketballCourt" parent="." instance=ExtResource("2_1vrkd")]
+
+[node name="XROrigin3D" parent="." instance=ExtResource("2_o4l0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.211379, 1, -0.00867921)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ehfnw")
+
+[node name="BallRack" parent="." instance=ExtResource("4_qik73")]
+transform = Transform3D(0.211839, 0, -0.212424, 0, 0.3, 0, 0.212424, 0, 0.211839, 0.664848, 0.167704, -0.542218)
+
+[node name="BallPickable" parent="." instance=ExtResource("6_npnhw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.963057, 0.819968, -0.421738)
+
+[node name="BallPickable2" parent="." instance=ExtResource("6_npnhw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.758919, 0.819968, -0.605167)
+
+[node name="BallPickable3" parent="." instance=ExtResource("6_npnhw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.551822, 0.819968, -0.818181)
+
+[node name="Basket" parent="." instance=ExtResource("8_6isci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.113)
+scoreValue = 3
+
+[node name="Basket2" parent="." instance=ExtResource("8_6isci")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.29283, 14.1707)
+
+[node name="Menu" parent="." instance=ExtResource("6_b8voy")]
+process_mode = 4
+transform = Transform3D(0.000705872, 0, -0.00070834, 0, 0.001, 0, 0.00070834, 0, 0.000705872, 1.01968, 1.4399, -0.831844)
+visible = false
+screen_size = Vector2(1280, 720)
+enabled = false
+scene = ExtResource("6_5ad50")
+viewport_size = Vector2(1150, 648)
+transparent = 0
+unshaded = true
+
+[node name="Scoreboard" parent="." instance=ExtResource("6_b8voy")]
+transform = Transform3D(0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, 0, 5.59159, -13.3749)
+screen_size = Vector2(1280, 720)
+scene = ExtResource("9_owhy5")
+viewport_size = Vector2(1150, 648)
+unshaded = true
+
+[node name="Scoreboard2" parent="." instance=ExtResource("6_b8voy")]
+transform = Transform3D(-0.004, 0, -3.49691e-10, 0, 0.004, 0, 3.49691e-10, 0, -0.004, 0, 5.592, 13.375)
+screen_size = Vector2(1280, 720)
+scene = ExtResource("9_owhy5")
+viewport_size = Vector2(1150, 648)
+unshaded = true
+
+[node name="Bleachers" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.40826, 0.0619263, -0.438985)
+mesh = ExtResource("10_nnfxm")
+
+[node name="Fan" parent="." instance=ExtResource("11_i37ew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.99227, 1.13639, -4.15141)
+
+[node name="Fan2" parent="." instance=ExtResource("11_i37ew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0371, 2.22144, -9.05645)
+
+[node name="Fan3" parent="." instance=ExtResource("11_i37ew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.988, 1.64019, 5.20999)
+
+[node name="Fan4" parent="." instance=ExtResource("11_i37ew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.006, 1.64096, 6.05585)
+
+[node name="Fan5" parent="." instance=ExtResource("11_i37ew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.94045, 1.20245, 9.14716)
+
+[node name="Fan6" parent="." instance=ExtResource("11_i37ew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9255, 3.24408, 7.29642)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("12_yvo8c")
+panning_strength = 0.0
+script = ExtResource("13_4enfs")
+
+[connection signal="finished" from="AudioStreamPlayer3D" to="AudioStreamPlayer3D" method="_on_finished"]

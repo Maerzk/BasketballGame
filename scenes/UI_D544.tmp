@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5m6cslmn3xle"]
+
+[ext_resource type="Script" path="res://scripts/UI_score.gd" id="1_m72vh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ij3oo"]
+font_size = 136
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_m72vh")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.388235, 0.360784, 0.807843, 1)
+
+[node name="Score" type="Label" parent="Control"]
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 938.0
+offset_bottom = 248.0
+text = "Score: "
+label_settings = SubResource("LabelSettings_ij3oo")

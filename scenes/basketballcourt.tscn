@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://q51uoyl3wvu8"]
+
+[ext_resource type="PackedScene" uid="uid://b5fi0kl361ulp" path="res://assets/BasketballCourt.blend" id="1_y6o6l"]
+[ext_resource type="ArrayMesh" uid="uid://d3nsh5coqyq7b" path="res://assets/Fence.obj" id="2_3jpsp"]
+[ext_resource type="Material" uid="uid://c53ch6eo6vwxu" path="res://materials/Fence.tres" id="3_xbu30"]
+[ext_resource type="ArrayMesh" uid="uid://bx0q4yavu5x6f" path="res://assets/Fence1.1.obj" id="4_7qjlb"]
+
+[node name="BasketballCourt" type="Node3D"]
+
+[node name="BasketballCourtBlender" parent="." instance=ExtResource("1_y6o6l")]
+
+[node name="Fence" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_3jpsp")
+surface_material_override/0 = ExtResource("3_xbu30")
+
+[node name="Fence1_1" type="MeshInstance3D" parent="."]
+mesh = ExtResource("4_7qjlb")
+surface_material_override/0 = ExtResource("3_xbu30")

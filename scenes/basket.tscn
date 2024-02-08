@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwqjxrsyr3wql"]
+
+[ext_resource type="PackedScene" uid="uid://dswnn3dm5ki6t" path="res://assets/Basket.blend" id="1_0qgde"]
+[ext_resource type="Script" path="res://scripts/Basket_Settings.gd" id="1_gk3of"]
+[ext_resource type="Script" path="res://scripts/Basket_Area3D.gd" id="2_bi1y7"]
+[ext_resource type="AudioStream" uid="uid://ckb84s1t4u747" path="res://assets/sounds/short-success-sound-glockenspiel-treasure-video-game-6346.mp3" id="4_7vg7t"]
+[ext_resource type="ArrayMesh" uid="uid://bpdmjwby80cwd" path="res://assets/Net.obj" id="4_viuld"]
+[ext_resource type="Texture2D" uid="uid://12if473xc5ih" path="res://assets/textures/Net.png" id="5_ayan4"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uxeyr"]
+height = 0.2
+radius = 0.35
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkrtx"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("5_ayan4")
+
+[node name="Basket" type="Node3D"]
+script = ExtResource("1_gk3of")
+
+[node name="Basket_Mesh" parent="." instance=ExtResource("1_0qgde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00848448, 0, 0.0226536)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_bi1y7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00648153, 2.95283, 1.86745)
+shape = SubResource("CylinderShape3D_uxeyr")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Area3D"]
+stream = ExtResource("4_7vg7t")
+
+[node name="SoftBody3D" type="SoftBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0204089)
+mesh = ExtResource("4_viuld")
+surface_material_override/0 = SubResource("StandardMaterial3D_gkrtx")
+pinned_points = [344, 597, 553, 509, 465, 432, 267, 212, 124, 169, 619, 377]
+attachments/0/point_index = 344
+attachments/0/spatial_attachment_path = NodePath("..")
+attachments/0/offset = Vector3(0.425001, 2.99, 1.95866)
+attachments/1/point_index = 597
+attachments/1/spatial_attachment_path = NodePath("..")
+attachments/1/offset = Vector3(0.425001, 2.99, 1.7309)
+attachments/2/point_index = 553
+attachments/2/spatial_attachment_path = NodePath("..")
+attachments/2/offset = Vector3(0.311119, 2.99, 1.53366)
+attachments/3/point_index = 509
+attachments/3/spatial_attachment_path = NodePath("..")
+attachments/3/offset = Vector3(0.113876, 2.99, 1.41977)
+attachments/4/point_index = 465
+attachments/4/spatial_attachment_path = NodePath("..")
+attachments/4/offset = Vector3(-0.113889, 2.99, 1.41977)
+attachments/5/point_index = 432
+attachments/5/spatial_attachment_path = NodePath("..")
+attachments/5/offset = Vector3(-0.311132, 2.99, 1.53366)
+attachments/6/point_index = 267
+attachments/6/spatial_attachment_path = NodePath("..")
+attachments/6/offset = Vector3(-0.425014, 2.99, 1.7309)
+attachments/7/point_index = 212
+attachments/7/spatial_attachment_path = NodePath("..")
+attachments/7/offset = Vector3(-0.425014, 2.99, 1.95866)
+attachments/8/point_index = 124
+attachments/8/spatial_attachment_path = NodePath("..")
+attachments/8/offset = Vector3(-0.311132, 2.99, 2.15591)
+attachments/9/point_index = 169
+attachments/9/spatial_attachment_path = NodePath("..")
+attachments/9/offset = Vector3(-0.113889, 2.99, 2.26979)
+attachments/10/point_index = 619
+attachments/10/spatial_attachment_path = NodePath("..")
+attachments/10/offset = Vector3(0.113876, 2.99, 2.26979)
+attachments/11/point_index = 377
+attachments/11/spatial_attachment_path = NodePath("..")
+attachments/11/offset = Vector3(0.311119, 2.99, 2.15591)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
